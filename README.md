@@ -44,6 +44,15 @@ devel-su zypper ref
 devel-su zypper in flatpak flatpak-runner
 ```
 
+As regular user (nemo), generate Hybris extension:
+```
+flatpak-extension-hybris
+```
+
+This has to be done after each libhybris update (usually after Sailfish OS update).
+
+Reboot to finish installation.
+
 In general, install and use Flatpaks from your home folder to avoid
 filling up system storage and simplification of application
 installation. Add Flatpak repositories, such as Flathub:
