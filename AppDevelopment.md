@@ -108,7 +108,7 @@ import QtQuick.VirtualKeyboard 2.1
 
 in the header section and addition of
 
-```json
+```qml
     InputPanel {
         id: inputPanel
         anchors.left: parent.left
