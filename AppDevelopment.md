@@ -93,31 +93,27 @@ flatpak-runner org.kde.mobile.angelfish
 ```
 
 
-## Use of Qt Virtual Keyboard
+## Use of Sailfish keyboard
 
-As we don't have support for Sailfish keyboard nor QtVirtualKeyboard
-by included compositor, you may have to create input panel as
-described in
-https://doc.qt.io/qt-5/qtvirtualkeyboard-deployment-guide.html#creating-inputpanel. In
-practice, for Kirigami applications, it requires modification of the main QML with Kirigami.ApplicationWindow.
-Namely, addition of
+There is a version of Maliit plugin that can be included to provide support for the keyboard. Add the 
+following section into your packaging file:
 
+```json
+        {
+            "name": "maliit-framework-plugin",
+            "buildsystem": "simple",
+            "build-commands": [
+                "cmake -Denable-docs=OFF -Denable-tests=OFF -Denable-glib=off -Denable-xcb=ON -Denable-wayland=OFF -Denable-wayland-gtk=OFF -Denable-qt5-inputcontext=ON -Denable-hwkeyboard=OFF",
+                "make maliitplatforminputcontextplugin",
+                "install -D -t /app/lib/plugins/platforminputcontexts libmaliitplatforminputcontextplugin.so"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/sailfishos-flatpak/maliit-framework.git",
+                    "branch": "flatpak"
+                }
+            ]
+        }
 ```
-import QtQuick.VirtualKeyboard 2.1
-```
 
-in the header section and addition of
-
-```qml
-    InputPanel {
-        id: inputPanel
-        anchors.left: parent.left
-        anchors.right: parent.right
-        y: Qt.inputMethod.visible ? parent.height - inputPanel.height : parent.height
-        visible: Qt.inputMethod.visible
-    }    
-```
-
-just before closing Kirigami.ApplicationWindow definition. As Kirigami
-follows Qt input methods, window content should be shifted on opening
-of the keyboard.
