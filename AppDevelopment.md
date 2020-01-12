@@ -95,25 +95,5 @@ flatpak-runner org.kde.mobile.angelfish
 
 ## Use of Sailfish keyboard
 
-There is a version of Maliit plugin that can be included to provide support for the keyboard. Add the 
-following section into your packaging file:
-
-```json
-        {
-            "name": "maliit-framework-plugin",
-            "buildsystem": "simple",
-            "build-commands": [
-                "cmake -Denable-docs=OFF -Denable-tests=OFF -Denable-glib=off -Denable-xcb=ON -Denable-wayland=OFF -Denable-wayland-gtk=OFF -Denable-qt5-inputcontext=ON -Denable-hwkeyboard=OFF",
-                "make maliitplatforminputcontextplugin",
-                "install -D -t /app/lib/plugins/platforminputcontexts libmaliitplatforminputcontextplugin.so"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/sailfishos-flatpak/maliit-framework.git",
-                    "branch": "flatpak"
-                }
-            ]
-        }
-```
+Maliit plugin should be mounted by flatpak-runner automatically. No need to adjust the sources.
 
