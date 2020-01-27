@@ -51,7 +51,7 @@ in `flatpak-runner` under Extension pulley menu action.
 
 Reboot to finish installation.
 
-Currently, it is only supported if you install and use Flatpaks from your home folder This will avoid
+Currently, it is only supported if you install and use Flatpaks from your home folder. This will avoid
 filling up system storage and will simplify of application installation. Add Flatpak repositories, 
 such as Flathub:
 
