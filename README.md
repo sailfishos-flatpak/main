@@ -59,6 +59,12 @@ such as Flathub:
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
 
+For KDE apps:
+```
+curl -O https://distribute.kde.org/kdeapps.flatpakrepo
+flatpak remote-add --user --if-not-exists kdeapps kdeapps.flatpakrepo
+```
+
 After that, install applications with `flatpak install --user`.
 
 To get applications recognized by Lipstick, run `flatpak-runner`. The runner will also allow you to
