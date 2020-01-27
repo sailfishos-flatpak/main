@@ -65,7 +65,8 @@ curl -O https://distribute.kde.org/kdeapps.flatpakrepo
 flatpak remote-add --user --if-not-exists kdeapps kdeapps.flatpakrepo
 ```
 
-After that, install applications with `flatpak install --user`.
+After that, install applications with `flatpak install --user appname` in terminal. It will ask few
+questions and install the application with its dependencies.
 
 To get applications recognized by Lipstick, run `flatpak-runner`. The runner will also allow you to
 set application-specific and default environment variables, Qt scaling and perceived DPI.
