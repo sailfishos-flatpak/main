@@ -41,21 +41,19 @@ repository with the Flatpak packages and install `flatpak` with
 ```
 ssu addrepo rinigus-flatpak http://repo.merproject.org/obs/home:/rinigus:/flatpak/sailfish_latest_armv7hl/
 devel-su zypper ref
-devel-su zypper in flatpak flatpak-runner
+devel-su zypper in flatpak flatpak-runner flatpak-maliit-plugin
 ```
 
-As regular user (nemo), generate Hybris extension:
-```
-flatpak-extension-hybris
-```
-
-This has to be done after each libhybris update (usually after Sailfish OS update).
+Start `flatpak-runner` either from app grid (shown as Flatpak) or from terminal (`flatpak-runner`). 
+This will generate Hybris extension that is used to run applications. Note that the extension 
+has to be refreshed after libhybris update (usually after Sailfish OS update). This can be done 
+in `flatpak-runner` under Extension pulley menu action.
 
 Reboot to finish installation.
 
-In general, install and use Flatpaks from your home folder to avoid
-filling up system storage and simplification of application
-installation. Add Flatpak repositories, such as Flathub:
+Currently, it is only supported if you install and use Flatpaks from your home folder This will avoid
+filling up system storage and will simplify of application installation. Add Flatpak repositories, 
+such as Flathub:
 
 ```
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -63,7 +61,10 @@ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flath
 
 After that, install applications with `flatpak install --user`.
 
-To run applications, use `flatpak-runner`. For example,
+To get applications recognized by Lipstick, run `flatpak-runner`. The runner will also allow you to
+set application-specific and default environment variables, Qt scaling and perceived DPI.
+
+To run applications, either launch them from app grid or run with 
 
 ```
 flatpak-runner org.kde.mobile.angelfish
