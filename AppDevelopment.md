@@ -11,8 +11,7 @@ using Flatpak elsewhere.
 
 ## Setting up environment
 
-In the following, we will setup environment for ARM. Similar procedure
-should work for i386.
+In the following, we will setup environment for ARM. For i386, you probably don't need to setup QEMU. 
 
 1. Install QEMU with user static support. For Gentoo, specify
 `static-user` use flag of `app-emulation/qemu` and set
@@ -22,7 +21,7 @@ QEMU_USER_TARGETS="aarch64 arm i386"
 ```
 in make.conf. For Fedora, install `qemu-system-arm qemu-user-static`.
 
-2. If configuration is not provided out of the box, add
+2. If configuration is not provided out of the box, as it is for some distributions, add
 `/etc/binfmt.d/qemu-arm-static.conf`:
 ```
 :qemu-arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\xff:/usr/bin/qemu-arm:F
@@ -48,7 +47,7 @@ flatpak install --user org.kde.Platform/arm/5.12 org.kde.Sdk/arm/5.12
 flatpak run --command=sh --arch=arm org.kde.Platform/arm/5.12
 ```
 
-If you get into the shell, all works as expected.
+If you get into the shell, all works as expected. See below for known issues.
 
 
 ## Compilation and packaging
@@ -92,8 +91,24 @@ After that, it can be run by
 flatpak-runner org.kde.mobile.angelfish
 ```
 
+Assuming that the application has .desktop installed, you can configure its environment using `flatpak-runner`. Just 
+start the runner from application grid and configure the application environment in it.
+
 
 ## Use of Sailfish keyboard
 
 Maliit plugin should be mounted by flatpak-runner automatically. No need to adjust the sources.
+
+
+## Known issues
+
+When compiling for ARM, there are issues imposed by either absence or broken handling of statx syscall. In practice,
+it means that we cannot use `qmake` in the projects compiled against KDE 5.12 Sdk and neither `qmake` nor `cmake` in
+KDE 5.13. As is, we are limited to `cmake` on 5.12 right now. Symptoms are errors like "Project ERROR: Unknown module(s) in QT: core dbus" while compiling the projects.
+
+Corresponding issues are filed and are listed below:
+
+* https://bugs.kde.org/show_bug.cgi?id=416262
+* https://bugs.launchpad.net/qemu/+bug/1861341
+* https://invent.kde.org/kde/flatpak-kde-runtime/issues/2
 
