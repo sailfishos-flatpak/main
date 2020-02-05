@@ -41,7 +41,7 @@ repository with the Flatpak packages and install `flatpak` with
 ```
 ssu addrepo rinigus-flatpak http://repo.merproject.org/obs/home:/rinigus:/flatpak/sailfish_latest_armv7hl/
 devel-su zypper ref
-devel-su zypper in flatpak flatpak-runner flatpak-maliit-plugin
+devel-su zypper in flatpak flatpak-runner flatpak-maliit-plugin-qt
 ```
 
 Start `flatpak-runner` either from app grid (shown as Flatpak) or from terminal (`flatpak-runner`). 
