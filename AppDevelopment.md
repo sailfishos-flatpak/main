@@ -103,8 +103,7 @@ Maliit plugin should be mounted by flatpak-runner automatically. No need to adju
 ## Known issues
 
 When compiling for ARM, there are issues imposed by either absence or broken handling of statx syscall. In practice,
-it means that we cannot use `qmake` in the projects compiled against KDE 5.12 Sdk and neither `qmake` nor `cmake` in
-KDE 5.13. As is, we are limited to `cmake` on 5.12 right now. Symptoms are errors like "Project ERROR: Unknown module(s) in QT: core dbus" while compiling the projects.
+it means that we cannot use `qmake` in the projects compiled against KDE 5.12 Sdk. As is, we are limited to `cmake` on 5.12 right now. Symptoms are errors like "Project ERROR: Unknown module(s) in QT: core dbus" while compiling the projects.
 
 Corresponding issues are filed and are listed below:
 
@@ -112,3 +111,8 @@ Corresponding issues are filed and are listed below:
 * https://bugs.launchpad.net/qemu/+bug/1861341
 * https://invent.kde.org/kde/flatpak-kde-runtime/issues/2
 
+
+On KDE 5.14, `cmake` is possible. However, there are problems with running it using regular x86_64 host (see https://gitlab.com/freedesktop-sdk/freedesktop-sdk/issues/968, probably caused by https://bugs.launchpad.net/qemu/+bug/1805913). As a workaround, I managed to compile when using
+
+- i686 virtual host
+- ext4 fs with 64bit feature disabled (`tune2fs -O ^64bit /dev/sda1`). 
