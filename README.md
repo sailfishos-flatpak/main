@@ -86,6 +86,30 @@ To run applications, either launch them from app grid or run with
 flatpak-runner org.kde.mobile.angelfish
 ```
 
+## App specific tips
+
+### Difference between DPI and scale
+
+As Sailfish devices are HiDPI, there are some times issues with presenting content. By default, Flatpak Runner sets DPI 
+through Qt environment variable to force the same DPI as on the device. Alternatively, its possible to use scaling, as in
+openGL to stretch the output. For Qt apps, usually, there is no big difference on how to approach it as long as DPI times 
+scale gives the same value. However, there are exceptions and its best to experiment with these settings if the app looks
+too big ot too small. In such cases, you could reduce or increase overall scale x dpi to make it feel right.
+
+DPI and scaling can be changed in Flapak Runner, either globally or for specific app.
+
+### QtWebengine and related applications: Angelfish
+
+It seems that QtWebengine (Qt 5.14) overshoots at high DPI values wih the scaling. So, I suggest to increase 
+scaling and reduce DPI. On my device with ~430DPI, I am using 3x scaling and 120 DPI. This results in 
+360DPI/430DPI reduction in overall size which is my preference in this case.
+
+### Mirage
+
+Similar to Angelfish, scale 3x and DPI 130 is used. It maybe due to older Qt that is used (5.12 for flatpaks at the 
+moment of writing).
+
+
 ## Application development
 
 For description of application development, see separate
