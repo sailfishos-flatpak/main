@@ -109,6 +109,10 @@ scaling and reduce DPI. On my device with ~430DPI, I am using 3x scaling and 120
 Similar to Angelfish, scale 3x and DPI 130 is used. It maybe due to older Qt that is used (5.12 for flatpaks at the 
 moment of writing).
 
+### Telegram Desktop
+
+To make org.telegram.dekstop working add following environment variable:
+`QT_QPA_PLATFORM=wayland`
 
 ## Application development
 
