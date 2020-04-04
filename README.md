@@ -104,10 +104,25 @@ It seems that QtWebengine (Qt 5.14) overshoots at high DPI values wih the scalin
 scaling and reduce DPI. On my device with ~430DPI, I am using 3x scaling and 120 DPI. This results in 
 360DPI/430DPI reduction in overall size which is my preference in this case.
 
+Angelfish allows to setup your navigation bar buttons in Settings. While the default is based on KDE 
+requirements, its easy to make it into the bar that we are used to. In my case, I have: tabs, back, address, 
+and reload buttons. Menu buttons are hidden.
+
+To get into the main and context menus (left and right menus by default), all you have to do is to 
+slide your finger along bottom border of the screen. Depending on direction, you will get either main or 
+context menu. As, at least in my case, menus were mainly used to access back and reload buttons, I don't 
+have much use for them if the buttons are out. Note that the menu buttons will appear in landscape mode 
+as there is more screen space over there.
+
+Consider also using `Reduce window when keyboard is shown` to scale app window when the keyboard is shown. Its useful
+when input entries are shown under the keyboard. For example, find in page entry.
+
 ### Mirage
 
 Similar to Angelfish, scale 3x and DPI 130 is used. It maybe due to older Qt that is used (5.12 for flatpaks at the 
 moment of writing).
+
+Its recommended to use `Reduce window when keyboard is shown` to be able to see your message while you type it.
 
 ### Telegram Desktop
 
