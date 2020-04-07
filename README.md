@@ -39,12 +39,12 @@ repository with the Flatpak packages and install `flatpak` with
 `flatpak-runner`:
 
 ```
-ssu addrepo rinigus-flatpak http://repo.merproject.org/obs/home:/rinigus:/flatpak/sailfish_latest_armv7hl/
-devel-su zypper ref
-devel-su zypper in flatpak flatpak-runner
+devel-su ssu addrepo rinigus-flatpak http://repo.merproject.org/obs/home:/rinigus:/flatpak/sailfish_latest_armv7hl/
+devel-su pkcon refresh
+devel-su pkcon install flatpak-runner
 ```
 
-Start `flatpak-runner` either from app grid (shown as Flatpak) or from terminal (`flatpak-runner`). 
+Start `flatpak-runner` either from app grid (shown as Flatpak) or from terminal (`flatpak-runner` without root). 
 This will generate Hybris extension that is used to run applications. Note that the extension 
 has to be refreshed after libhybris update (usually after Sailfish OS update). This can be done 
 in `flatpak-runner` under Extension pulley menu action.
@@ -61,8 +61,7 @@ flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flath
 
 For KDE apps:
 ```
-curl -O https://distribute.kde.org/kdeapps.flatpakrepo
-flatpak remote-add --user --if-not-exists kdeapps kdeapps.flatpakrepo
+flatpak remote-add --user --if-not-exists kdeapps http://distribute.kde.org/kdeapps.flatpakrepo
 ```
 
 After that, install applications with `flatpak install --user appname` in terminal. It will ask few
