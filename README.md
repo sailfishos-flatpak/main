@@ -125,8 +125,8 @@ Its recommended to use `Reduce window when keyboard is shown` to be able to see 
 
 ### Telegram Desktop
 
-To make org.telegram.dekstop working add following environment variable:
-`QT_QPA_PLATFORM=wayland`
+To make org.telegram.dekstop working add following environment variable: `QT_QPA_PLATFORM=wayland`. To set, 
+in `flatpak-runner`, add new variable and specify its name as `QT_QPA_PLATFORM` and value as `wayland`.
 
 ## Application development
 
